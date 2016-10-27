@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Local storage with Multiple Records</title>
+	</head>
+	
+	<body>
+		<form>
+			<fieldset>
+				
+				<label for="TextBox1">First Name:</label><br>
+				<input type="text" name="TextBox1" id="TextBox1" /><br>
+				
+				<label for="TextBox2">Last Name:</label><br>
+				<input type="text" name="TextBox2" id="TextBox2" /><br>
+				
+				<label for="TextBox3">Age:</label><br>
+				<input type="text" name="TextBox3" id="TextBox3" /><br>
+				
+				
+				<input type="button" id="button1" value="Add" onclick="OnSetData()" />
+				
+				<input type="button" id="button2"  value="Get Data" onclick="OnGetData()" />
+			</fieldset>
+		</form>
+
+		<div>
+			<table id="table1" border="1">
+			</table>
+		</div>
+
+		<script>
+		
+			//This function is triggered when the user clicks the SetData button
+			function OnSetData()
+			{
+				//get values from text boxes
+				var temp1 = document.getElementById("TextBox1").value;
+				var temp2 = document.getElementById("TextBox2").value;
+				var temp3 = document.getElementById("TextBox3").value;
+
+				var Persons = JSON.parse(localStorage.getItem('Persons'));
+				if (typeof Persons == 'undefined' || Persons == null)
+				{
+					Persons = [ ];
+				}
+				
+				//create json object
+				var person = { "FirstName": temp1,
+										  "LastName": temp2,
+										  "Age": temp3
+										};
+
+				//store json object into array
+				Persons.push(person);
+
+				localStorage.setItem("Persons", JSON.stringify(Persons));
+				
+				//clear the text boxes
+				document.getElementById("TextBox1").value = "";
+				document.getElementById("TextBox2").value = "";
+				document.getElementById("TextBox3").value = "";
+				
+				alert("Saved");
+			}
+			
+			//This function is triggered when the user clicks the GetData button
+			function OnGetData()
+			{
+				var temp = "";
+				var Persons = JSON.parse(localStorage.Persons);
+
+				for (i=0; i< Persons.length; i++)
+				{
+					temp = temp + "<tr> <td>" + Persons[i].FirstName + "</td> <td>" + Persons[i].LastName + "</td> <td>" + Persons[i].Age + "</td> </tr>";
+				}
+				document.getElementById("table1").innerHTML = temp;
+			}
+			
+		</script>
+
+	</body>
+	
+</html>

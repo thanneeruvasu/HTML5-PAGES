@@ -1,0 +1,28 @@
+		HTML 5
+		======
+
+ - Latest version of HTML.
+
+ - Introduced in 2012
+
+ - It has some new features:
+       * HTML 5 Removed Elements
+       * HTML 5 Removed Attributes
+       * HTML 5 New Elements
+       * HTML 5 New Form Elements
+       * HTML 5 New Input Types
+       * HTML 5 New Form Attributes
+       * HTML 5 Audio
+       * HTML 5 Video
+       * HTML 5 Drag and Drop
+       * HTML 5 Geolocation
+       * HTML 5 Web Storage
+       * HTML 5 App Cache
+       * HTML 5 Web Workers
+       * HTML 5 SSE
+       * HTML 5 Canvas
+       * HTML 5 SVG
+
+
+=====================================================
+

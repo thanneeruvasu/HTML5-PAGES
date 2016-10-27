@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+
+		<title>HTML 5</title>
+		
+		<style type="text/css">
+
+			body, input
+			{
+				font-family: 'Segoe UI';
+				font-size: 25px;
+			}
+
+			#div1, #div2 { width:350px; height:170px; padding:10px; border:1px solid #aaaaaa; }
+
+		</style>
+
+	</head>
+	
+	<body>
+
+		<p>Drag the image into the rectangle:</p>
+
+		<div id="div1" ondragover="allowDrop(event)" ondrop="drop(event)">
+		</div>
+		<br>
+
+		<div id="div2">
+
+			<img id="image1" src="img1.jpg" width="150"
+				 draggable="true" ondragstart="drag(event)" >
+
+			<img id="image2" src="img2.jpg" width="150"
+				 draggable="true" ondragstart="drag(event)" >
+
+		 </div>
+
+		 <script>
+
+			//Default scripting language in html5 is "Javascript"
+			
+			//allows the image to send its id to div
+			function drag(ev)
+			{
+				ev.dataTransfer.setData("x", ev.target.id); //transfer image id to div
+			}
+			
+			//allows the div to drop some item on it
+			function allowDrop(ev)
+			{
+				ev.preventDefault(); //allow dropping on div
+			}
+
+			//allow the div to receive the image id
+			function drop(ev)
+			{
+				ev.preventDefault();
+				var data=ev.dataTransfer.getData("x"); //receive image id
+				var myImage = document.getElementById(data);
+				ev.target.appendChild(myImage); //add image to div
+			}
+			
+		</script>
+
+	</body>
+
+</html>

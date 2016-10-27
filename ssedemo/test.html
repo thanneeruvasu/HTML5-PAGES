@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>SSE Demo</title>
+	</head>
+	
+	<body>
+	
+		<h1>Getting server updates</h1>
+		<div id="result"></div>
+
+		<script type="text/javascript">
+
+            if (typeof (EventSource) == "undefined")
+			{
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+            }
+
+            else
+			{
+                var source = new EventSource("demo.aspx");
+
+                source.onmessage = function (event)
+				{
+                    document.getElementById("result").innerHTML += event.data + "<br>";
+                };
+
+            }
+
+        </script>
+
+	</body>
+
+</html>

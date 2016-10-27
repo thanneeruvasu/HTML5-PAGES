@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+	
+		<style type="text/css">
+			#div1,  #div2
+			{float:left; width:300px; height:200px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
+		</style>
+		
+		<script>
+			
+			function drag(ev)
+			{
+				ev.dataTransfer.setData("x", ev.target.id); //transfer image id to div
+			}
+			
+			function allowDrop(ev)
+			{
+				ev.preventDefault();
+			}
+
+			function drop(ev)
+			{
+				ev.preventDefault();
+				var data=ev.dataTransfer.getData("x"); //receive image id
+				
+				var a = document.getElementById(data);
+				ev.target.appendChild(a);
+			}
+			
+		</script>
+
+	</head>
+	
+	<body>
+
+		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+		
+		  <img src="img1.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="200px" style="cursor:pointer" />
+		  
+	    </div>
+		
+		<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+	</body>
+
+</html>

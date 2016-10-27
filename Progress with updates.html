@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+
+	<body>
+
+		Uploading progress:
+		<progress id="progress1" value="0" min="0" max="100">
+		</progress>
+		
+		<input type="button" id="button1" value="Start Uploading"
+			onClick="timer = setInterval(increment, 100);" />
+
+		<p><b>Note:</b> The &lt;progress&gt; tag is not supported in IE and Safari.</p>
+
+		<script type="text/javascript">
+		
+			var timer; /*global variable*/
+			
+			function increment()
+			{
+				var p = document.getElementById("progress1");
+				p.value += 3;
+				
+				if (p.value >=100)
+				{
+					clearInterval(timer); //stop timer
+					alert("Done");
+				}
+			}
+			
+		</script>
+
+	</body>
+
+</html>

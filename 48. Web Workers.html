@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title>HTML 5</title>
+		
+		<style type="text/css">
+
+			body, input
+			{
+				font-family: 'Segoe UI';
+				font-size: 25px;
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<p>Count numbers: <span id="result"></span></p>
+
+		<input type="button" value="Start Worker" onclick="startWorker()"> 
+		<input type="button" value="Stop Worker" onclick="stopWorker()">
+
+		<script type="text/javascript">
+
+			var w;
+
+			function startWorker()
+			{
+				if (typeof(Worker) == "undefined")
+				{
+					document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+				}
+				else
+				{
+
+					if (typeof(w)=="undefined")
+					{
+						w=new Worker("webworkers.js"); //calls webworkers.js file in background
+					}
+					
+					w.onmessage = function (event)
+					{
+						document.getElementById("result").innerHTML = event.data;
+					};
+
+				}
+			}
+
+			function stopWorker()
+			{ 
+				w.terminate();
+			}
+			
+		</script>
+
+	</body>
+	
+</html>
